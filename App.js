@@ -1,12 +1,10 @@
 import * as React from 'react';
-import { Text, View, StyleSheet, Button } from 'react-native';
+import { Text, View, StyleSheet, Button, Image, TouchableOpacity } from 'react-native';
 import Constants from 'expo-constants';
-
-// You can import from local files
 import AssetExample from './components/AssetExample';
-
-// or any pure javascript modules available in npm
 import { Card } from 'react-native-paper';
+import { StackNavigator } from 'react-navigation';
+
 
 export default class App extends React.Component {
   render() {
@@ -17,21 +15,58 @@ export default class App extends React.Component {
           <Text style={styles.appName}>
           Blood Donation App</Text>
 
-          <View style={styles.mainMenuButton}>
-            <Button 
-              title="Find Donor"
-            />
-            <Button 
-              title="Donate Now"
-            />  
+          <View style={styles.theWordButton}>
+            <TouchableOpacity style={styles.button}>
+              <Text style={styles.buttonWord}>
+                Find Donor
+              </Text>
+
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.button}>
+              <Text style={styles.buttonWord}>
+                Donate Now
+              </Text>
+            </TouchableOpacity>
           </View>
-        <Text style={styles.paragraph}>
-         "We make a living by what we get, but we make a life by what we give."<br></br> - Winston Churchill
-        </Text>
+
+          <View style={styles.theImageButton}>
+            <TouchableOpacity>
+              <Image
+                style={{width: 50, height: 50}}
+                source={require('./assets/about.png')}
+              />
+              
+            </TouchableOpacity>
+            
+            <TouchableOpacity>
+              <Image
+                style={{width: 50, height: 50}} 
+                source={require('./assets/eligibility.png')}
+              />
+            </TouchableOpacity>
+
+            <TouchableOpacity>
+              <Image
+                style={{width: 50, height: 50}} 
+                source={require('./assets/news.png')}
+              />
+            </TouchableOpacity>
+
+            <TouchableOpacity>
+              <Image
+                style={{width: 50, height: 50}} 
+                source={require('./assets/contact.png')}
+              />
+            </TouchableOpacity>
+          </View> 
+
         
-        <Text style={styles.copyright}>
-          Copyright © 2019 LAGUARDIA 
-        </Text>
+          <View style={styles.footer}>
+            <Text style={styles.footerText}>
+            Copyright © 2019 LAGUARDIA 
+            </Text>
+          </View>
       </View>
     );
   }
@@ -47,30 +82,47 @@ const styles = StyleSheet.create({
     backgroundColor: '#ff9791',
     padding: 8,
   },
-  paragraph: {
-    margin: 24,
-    fontSize: 15,
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-  mainMenuButton:{
+
+  theWordButton:{
     margin: 30,
-    flexDirection: "row",
+    //flexDirection: "row",
     justifyContent: "space-between"
   },
   appName:{
-    fontSize: 20,
+    fontSize: 30,
     textAlign: 'center',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    marginTop: -20
   },
-  copyright:{
-    fontSize: 12,
+  theImageButton:{
+    marginLeft: 10,
+    marginRight: 10,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    
+  },
+  footer:{
     textAlign: 'center',
-    marginTop: 70,
-    paddingTop: 4,
-    marginBottom: -4,
-    flex: 0.50,
     backgroundColor: "gray",
-    fontWeight: 'bold'
+    position: 'fixed',
+    bottom: 0,
+    left: 0,
+    right: 0
+  },
+  footerText:{
+    fontSize: 12,
+    fontWeight: 'bold',
+    fontFamily: 'Lucida Console'
+  },
+  button:{
+    alignItems: 'center',
+    backgroundColor: '#a30008',
+    padding: 10,
+    margin: 5,
+    borderRadius: 10
+  },
+  buttonWord:{
+    fontSize: 20,
+    color: "white"
   }
 });

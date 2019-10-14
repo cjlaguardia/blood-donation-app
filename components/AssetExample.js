@@ -6,6 +6,7 @@ export default class AssetExample extends React.Component {
     return (
       <View style={styles.container}>
         <Image style={styles.logo} source={require('../assets/logo.png')} />
+
         <Text style={styles.paragraph}>
           
         </Text>
